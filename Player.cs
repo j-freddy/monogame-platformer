@@ -5,10 +5,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-public class Player {
-    Texture2D texture;
-    Vector2 position;
-    float width = 36f;
+public class Player : Tile {
     float xVel = 0f;
     float yVel = 0f;
     float xAcc = 95f;
@@ -17,12 +14,13 @@ public class Player {
     float airResistance = 0.95f;
     float jumpPower = 1500f;
 
-    public void Initialize() {
-        position = new Vector2(300f, 300f);
+    public Player() : base(Vector2.Zero, 36f)
+    {
+
     }
 
-    private float GetScaleFactor() {
-        return width / Math.Max(texture.Width, texture.Height);
+    public void Initialize() {
+        position = new Vector2(300f, 300f);
     }
 
     public void LoadContent(ContentManager Content) {
@@ -60,19 +58,5 @@ public class Player {
         position.Y += yVel * deltaTime;
 
         Debug.WriteLine(position.Y);
-    }
-
-    public void Draw(SpriteBatch spriteBatch) {
-        spriteBatch.Draw(
-            texture,
-            position,
-            null,
-            Color.White,
-            0f,
-            Vector2.Zero,
-            Vector2.One * GetScaleFactor(),
-            SpriteEffects.None,
-            0f
-        );
     }
 }
