@@ -23,7 +23,7 @@ public class Level {
     };
 
     float blockWidth = 36;
-    List<Block> blocks;
+    public List<Block> blocks;
 
     public void Initialize() {
         blocks = new List<Block>();

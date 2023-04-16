@@ -24,7 +24,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        player.Initialize();
+        player.Initialize(level);
         level.Initialize();
         base.Initialize();
 

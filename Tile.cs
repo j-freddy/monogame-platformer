@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 
 public class Tile
 {
@@ -17,6 +18,16 @@ public class Tile
     private float GetScaleFactor()
     {
         return width / Math.Max(texture.Width, texture.Height);
+    }
+
+    public bool CollidesWith(Tile other)
+    {
+        return !(
+            position.X + width <= other.position.X ||
+            other.position.X + other.width <= position.X ||
+            position.Y + width <= other.position.Y ||
+            other.position.Y + other.width <= position.Y
+        );
     }
 
     public void Draw(SpriteBatch spriteBatch)
